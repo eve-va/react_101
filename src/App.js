@@ -1,12 +1,15 @@
-import './index.css';
-import Main from "./components/Main"
-import Navbar from "./components/Navbar"
+import About from "./components/About";
+import Footer from "./components/Footer";
+import Info from "./components/Info";
+import Interests from "./components/Interests";
 
 function App() {
   return (
     <div className="container">
-      <Navbar />
-      <Main />
+      <Info />
+      <About />
+      <Interests />
+      <Footer />
     </div>
   );
 }

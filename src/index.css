@@ -5,9 +5,107 @@
 body {
     margin: 0;
     font-family: Inter, sans-serif;
-    background-color: #282D35;
+    background-color: #23252C;
 }
 
+.info, .about, .interests, footer {
+    background-color: #1A1B21;
+    color: #FFFFFF;
+    width: 18vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: -20px;
+    text-align: center;
+}
+
+.info--avatar {
+    width: 18vw;
+    pointer-events: none;
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.info--title {
+    font-size: 25px;
+    line-height: 30px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.info--position {
+    color: #F3BF99;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.info--website {
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 15px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.email, .linkedin {
+    width: 7vw;
+    height: 20px;
+    margin: 1vw;
+    border-radius: 2px;
+}
+
+.email {
+    border: #ffffff;
+}
+
+.linkedin {
+    color: #ffffff;
+    background-color: #5093E2;
+    border: #5093E2;
+}
+
+.about, .interests {
+    text-align: left;
+    padding: 20px;
+}
+
+.about {
+    padding-bottom: 0px;
+}
+
+.about--title, .interests--title {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+
+.about--content, .interests--content {
+    color: #DCDCDC;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+    margin-top: 1px;
+}
+
+footer {
+    height: 10vh;
+    background: #161619;
+    border-radius: 0px 0px 10px 10px;
+}
+
+footer > button {
+    margin: 6px;
+    margin-top: 20px;
+}
+/*
 nav {
     display: flex;
     align-items: center;
@@ -16,11 +114,6 @@ nav {
     padding: 30px 25px;
 }
 
-.nav--icon {
-    height: 12vmin;
-    margin-right: 10px;
-    pointer-events: none;
-}
 
 .nav--logo_text {
     margin-right: auto;
@@ -32,14 +125,6 @@ nav {
 .nav--title {
     color: #DEEBF8;
     font-weight: 600;
-}
-
-main {
-    padding: 57px 27px;
-    color: white;
-    background-image: url(./logo.svg);
-    background-repeat: no-repeat;
-    background-position-x: 151%;
 }
 
 .main--title {
@@ -62,3 +147,4 @@ main {
     font-size: 1.4rem;
     color: #61DAFB;
 }
+*/
