@@ -4,147 +4,64 @@
 
 body {
     margin: 0;
-    font-family: Inter, sans-serif;
-    background-color: #23252C;
+    font-family: 'Poppins', sans-serif;
 }
 
-.info, .about, .interests, footer {
-    background-color: #1A1B21;
-    color: #FFFFFF;
-    width: 18vw;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0px;
-    margin-bottom: -20px;
-    text-align: center;
+nav {
+    height: 70px;
+    display: flex;
+    padding: 20px 35px;
+    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
 }
 
-.info--avatar {
-    width: 18vw;
-    pointer-events: none;
-    display: block;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px 10px 0px 0px;
+.bold {
+    font-weight: bold;
 }
 
-.info--title {
-    font-size: 25px;
-    line-height: 30px;
-    margin-top: 20px;
-    margin-bottom: 0px;
+.gray {
+    color: #918E9B;
 }
 
-.info--position {
-    color: #F3BF99;
-    font-size: 13px;
-    font-weight: normal;
-    line-height: 15px;
-    margin-top: 10px;
-    margin-bottom: 0px;
+.nav--logo {
+    max-width: 100px;
 }
 
-.info--website {
-    font-size: 10px;
-    font-weight: normal;
-    line-height: 15px;
-    margin-top: 5px;
-    margin-bottom: 0px;
-}
-
-.email, .linkedin {
-    width: 7vw;
-    height: 20px;
-    margin: 1vw;
-    border-radius: 2px;
-}
-
-.email {
-    border: #ffffff;
-}
-
-.linkedin {
-    color: #ffffff;
-    background-color: #5093E2;
-    border: #5093E2;
-}
-
-.about, .interests {
-    text-align: left;
+section {
     padding: 20px;
 }
 
-.about {
-    padding-bottom: 0px;
+.hero {
+    display: flex;
+    flex-direction: column;
+}
+.hero--photo {
+    max-width: 400px;
+    align-self: center;
 }
 
-.about--title, .interests--title {
-    font-size: 16px;
-    line-height: 24px;
-    font-weight: normal;
-    margin-bottom: 0px;
+.hero--header {
+    margin-bottom: 16px;
 }
 
-.about--content, .interests--content {
-    color: #DCDCDC;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 15px;
-    margin-top: 1px;
+.hero--text {
+    margin-top: 0;
 }
 
-footer {
-    height: 10vh;
-    background: #161619;
-    border-radius: 0px 0px 10px 10px;
+.card {
+    width: 175px;
+    font-size: 12px;
 }
 
-footer > button {
-    margin: 6px;
-    margin-top: 20px;
+.card--image {
+    width: 100%;
+    border-radius: 9px;
 }
-/*
-nav {
+
+.card--stats {
     display: flex;
     align-items: center;
-    background-color: #21222A;
-    height: 90px;
-    padding: 30px 25px;
 }
 
-
-.nav--logo_text {
-    margin-right: auto;
-    color: #61DAFB;
-    font-weight: 700;
-    font-size: 22px;
+.card--star {
+    height: 14px;
 }
-
-.nav--title {
-    color: #DEEBF8;
-    font-weight: 600;
-}
-
-.main--title {
-    margin: 0;
-    font-size: 40px;
-    letter-spacing: -0.05em;
-}
-
-.main--facts {
-    margin-top: 45px;
-    max-width: 400px;
-}
-
-.main--facts > li {
-    line-height: 20px;
-    padding-block: 10px;
-}
-
-.main--facts > li::marker {
-    font-size: 1.4rem;
-    color: #61DAFB;
-}
-*/

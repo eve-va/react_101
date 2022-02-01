@@ -1,15 +1,13 @@
-import About from "./components/About";
-import Footer from "./components/Footer";
-import Info from "./components/Info";
-import Interests from "./components/Interests";
+import Card from "./componenets/Card";
+import Hero from "./componenets/Hero";
+import Navbar from "./componenets/Navbar";
 
 function App() {
   return (
     <div className="container">
-      <Info />
-      <About />
-      <Interests />
-      <Footer />
+      <Navbar />
+      <Hero />
+      <Card />
     </div>
   );
 }
