@@ -4,97 +4,79 @@
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
+    background-color: rgba(88, 104, 117, 0.1);
 }
 
 nav {
+    background-color: rgba(88, 104, 117, 0.8);
+    color: #FFFFFF;
     height: 70px;
     display: flex;
-    padding: 20px 36px;
-    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    box-shadow: 0px 3px 8px rgb(88, 104, 117);
+    margin-bottom: 30px;
 }
 
-.bold {
-    font-weight: bold;
+nav > h3 {
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 70px;
+    text-align: center;
 }
 
-.gray {
-    color: #918E9B;
-}
-
-.nav--logo {
-    max-width: 100px;
-}
-
-section {
-    padding: 20px;
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-}
-
-.hero--photo {
-    max-width: 400px;
-    align-self: center;
-}
-
-.hero--header {
-    margin-bottom: 16px;
-}
-
-.hero--text {
-    margin-top: 0;
-}
-
-.cards-list {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    overflow-x: auto;
+nav > i {
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .card {
-    width: 175px;
-    font-size: 12px;
-    flex: 0 0 auto;         
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    background-color: #ffffff;
+    margin: 50px 30px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .card--image {
-    width: 100%;
-    height: 240px;
-    border-radius: 9px;
-    margin-bottom: 9px;
+    width: 400px;
+    height: 250px;
+    float: left;
+    margin-right: 20px;
+}
+
+.card--content {
+    height: 250px;
+    padding: 20px;
 }
 
 .card--title {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-family: 'Bebas Neue', cursive;
+	font-size: 30px;
+    line-height: 30px;
+	color: #344055;
+    display: inline;
+    margin-right: 20px;
+}
+
+.card--maps {
+    display: inline;
+    font-size: 13px;
+    color: #918E9B;
 }
 
 .card--stats {
-    display: flex;
-    align-items: center;
+    font-family: 'Bebas Neue', serif;
+    color: #48555f;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: -10px;
 }
 
-.card--star {
-    height: 14px;
-}
-
-.card--price {
-    margin-top: auto;
-}
-
-.card--badge {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    background-color: white;
-    padding: 5px 7px;
-    border-radius: 2px;
-    font-weight: bold;
+.card--description {
+    font-family: 'EB Garamond', serif;
+	text-align: left;
+	font-size: 18px;
+	color: #5e5e5e;
+    margin-top: 25px;
 }

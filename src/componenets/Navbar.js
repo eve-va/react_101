@@ -1,7 +1,8 @@
 export default function Navbar() {
     return (
         <nav>
-            <img src="../images/logo.png" alt='logo' className="nav--logo" />
+          <i className="fa fa-globe fa-2x"></i>
+          <h3>Explore Ukraine</h3>
         </nav>
     )
 }
