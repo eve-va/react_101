@@ -33,8 +33,10 @@ nav > i {
 
 .card {
     background-color: #ffffff;
-    margin: 50px 30px;
+    height: 250px;
     border-radius: 10px;
+    padding-right: 20px;
+    margin: 50px 30px;
     overflow: hidden;
 }
 
@@ -45,38 +47,85 @@ nav > i {
     margin-right: 20px;
 }
 
-.card--content {
-    height: 250px;
-    padding: 20px;
-}
-
 .card--title {
     font-family: 'Bebas Neue', cursive;
-	font-size: 30px;
     line-height: 30px;
+	font-size: 30px;
 	color: #344055;
-    display: inline;
-    margin-right: 20px;
+    margin: 20px;
+    margin-left: 0px;
+    margin-bottom: 15px;
+    display: inline-flex;
 }
 
 .card--maps {
-    display: inline;
     font-size: 13px;
     color: #918E9B;
+    display: inline;
 }
 
 .card--stats {
     font-family: 'Bebas Neue', serif;
     color: #48555f;
     font-size: 14px;
-    margin-top: 20px;
-    margin-bottom: -10px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
 .card--description {
     font-family: 'EB Garamond', serif;
 	text-align: left;
-	font-size: 18px;
+	font-size: 17px;
 	color: #5e5e5e;
-    margin-top: 25px;
+    margin-top: 15px;
 }
+
+
+
+@media only screen and (max-width: 675px) and (min-width: 200px) {
+    .card {
+        height: auto;
+        padding: 0px;
+    }
+
+    .card--image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .card--content {
+        height: 0px;
+        opacity: 0;
+        transition: height 2s, opacity 2s linear;
+    }
+
+    .card--title {
+        display: block;
+        text-align: center;
+        margin: 0px;
+    }
+
+    .card--maps {
+        display: block;
+        text-align: center;
+        margin: 10px 0px;
+    }
+
+    .card--description {
+        margin-bottom: 0;
+    }
+
+    .card:hover .card--content, .card:active .card--content {
+        padding: 20px;
+        padding-top: 0px;
+        height: 250px;
+        opacity: 1;
+        overflow: scroll;
+    }
+}
+
+/*
+@media only screen and (min-width: 675px) {...}
+@media only screen and (min-width: 990px) {...}
+*/

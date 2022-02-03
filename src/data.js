@@ -28,7 +28,7 @@ const data = [
         googleMapsUrl: "https://www.google.com/maps/place/Odesa,+Odessa+Oblast,+65000/@46.4598865,30.5717043,11z/data=!3m1!4b1!4m5!3m4!1s0x40c6318a0b864c43:0x129f8fe28cf2176c!8m2!3d46.482526!4d30.7233095?hl=en",
         founded: "September 2, 1794",
         population: "993.120",
-        description: "Odessa is a port city on the Black Sea in southern Ukraine. It’s known for its beaches and 19th-century architecture, including the Odessa Opera and Ballet Theater. The monumental Potemkin Stairs, immortalized in 'The Battleship Potemkin', lead down to the waterfront with its Vorontsov Lighthouse. Running parallel to the water, the grand Primorsky Boulevard is a popular promenade lined with mansions and monuments.",
+        description: "Odessa is a port city on the Black Sea in southern Ukraine. It’s known for its beaches and 19th-century architecture, including the Odessa Opera and Ballet Theater. The monumental Potemkin Stairs, immortalized in 'The Battleship Potemkin', lead down to the waterfront with its Vorontsov Lighthouse. Running parallel to the water, the grand Primorsky Boulevard is a popular promenade.",
         imageUrl: "https://t3.ftcdn.net/jpg/02/69/21/96/360_F_269219647_WyLRC4b1ivlk161yKPSclCL0SFEDJL7g.jpg"
     },
     {
