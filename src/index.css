@@ -145,15 +145,16 @@ nav > i {
 
     .card--description {
         height: 0px;
-        opacity: 0px;
+        opacity: 0;
         margin: 0px;
         clear: both;
+        transition: height 2s, opacity 2s linear;
     }
 
     .card:hover .card--description, .card:active .card--description {
-        padding: 20px;
         height: 140px;
         opacity: 1;
+        padding: 20px;
         overflow: scroll;
     }
 
