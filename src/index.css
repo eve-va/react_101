@@ -3,162 +3,61 @@
 }
 
 body {
+    font-family: "Karla", sans-serif;
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: rgba(88, 104, 117, 0.1);
 }
 
-nav {
-    background-color: rgba(88, 104, 117, 0.8);
-    color: #FFFFFF;
-    height: 70px;
+main {
+    padding: 36px;
+}
+
+.header {
     display: flex;
     align-items: center;
-    box-shadow: 0px 3px 8px rgb(88, 104, 117);
-    margin-bottom: 30px;
+    height: 65px;
+    background: linear-gradient(90deg, #672280 1.18%, #A626D3 100%);
+    color: white;
+    padding: 20px;
 }
 
-nav > h3 {
+.header--image {
+    height: 100%;
+    margin-right: 6px;
+}
+
+.header--title {
+    font-size: 1.25rem;
     margin-right: auto;
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 70px;
-    text-align: center;
 }
 
-nav > i {
-    margin-left: auto;
-    margin-right: 10px;
+.header--project {
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
-.card {
-    background-color: #ffffff;
-    height: 250px;
-    border-radius: 10px;
-    padding-right: 20px;
-    margin: 50px 30px;
-    overflow: hidden;
+.form {
+    display: grid;
+    grid-template: 40px 40px / 1fr 1fr;
+    gap: 17px;
 }
 
-.card--image {
-    width: 400px;
-    height: 250px;
-    float: left;
-    margin-right: 20px;
+.form--input {
+    font-family: "Karla", sans-serif;
+    border-radius: 5px;
+    border: 1px solid #D5D4D8;
+    text-indent: 5px;
 }
 
-.card--title {
-    font-family: 'Bebas Neue', cursive;
-    line-height: 30px;
-	font-size: 30px;
-	color: #344055;
-    margin: 20px;
-    margin-left: 0px;
-    margin-bottom: 15px;
-    display: inline-flex;
+.form--button {
+    grid-column: 1 / -1;
+    font-family: "Karla", sans-serif;
+    border-radius: 5px;
+    background: linear-gradient(90.41deg, #711F8D 1.14%, #A818DA 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
 }
 
-.card--maps {
-    font-size: 13px;
-    color: #918E9B;
-    display: inline;
-}
-
-.card--stats {
-    font-family: 'Bebas Neue', serif;
-    color: #48555f;
-    font-size: 14px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-}
-
-.card--description {
-    font-family: 'EB Garamond', serif;
-	text-align: left;
-	font-size: 17px;
-	color: #5e5e5e;
-    margin-top: 15px;
-}
-
-
-
-@media only screen and (max-width: 675px) and (min-width: 200px) {
-    .card {
-        height: auto;
-        padding: 0px;
-    }
-
-    .card--image {
-        width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-    }
-    
-    .card--content {
-        height: 0px;
-        opacity: 0;
-        transition: height 2s, opacity 2s linear;
-    }
-
-    .card--title {
-        display: block;
-        text-align: center;
-        margin: 0px;
-    }
-
-    .card--maps {
-        display: block;
-        text-align: center;
-        margin: 10px 0px;
-    }
-
-    .card--description {
-        margin-bottom: 0;
-    }
-
-    .card:hover .card--content, .card:active .card--content {
-        padding: 20px;
-        padding-top: 0px;
-        height: 250px;
-        opacity: 1;
-        overflow: scroll;
-    }
-}
-
-@media only screen and (max-width: 990px) and (min-width: 676px) {
-    .card {
-        height: auto;
-        padding: 0px;
-    }
-
-    .card--title {
-        display: block;
-        margin: 50px;
-        margin-left: 0px;
-        margin-right: 10px;
-    }
-
-    .card--maps {
-        display: block;
-        margin: 10px 0px;
-    }
-
-    .card--description {
-        height: 0px;
-        opacity: 0;
-        margin: 0px;
-        clear: both;
-        transition: height 2s, opacity 2s linear;
-    }
-
-    .card:hover .card--description, .card:active .card--description {
-        height: 140px;
-        opacity: 1;
-        padding: 20px;
-        overflow: scroll;
-    }
-
-    .card:hover .card--image, .card:active .card--image {
-        border-radius: 10px;
-    }
+.meme--image {
+    max-width: 100%;
 }

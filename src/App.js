@@ -1,14 +1,12 @@
-import Card from "./componenets/Card";
-import Navbar from "./componenets/Navbar";
-import data from './data'
+import Header from "./componenets/Header";
+import Meme from "./componenets/Meme";
 
 function App() {
-  const cards = data.map(item => <Card {...item}></Card>);
 
   return (
-    <div className="container">
-      <Navbar />
-      {cards}
+    <div>
+      <Header />
+      <Meme />
     </div>
   );
 }
