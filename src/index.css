@@ -125,7 +125,39 @@ nav > i {
     }
 }
 
-/*
-@media only screen and (min-width: 675px) {...}
-@media only screen and (min-width: 990px) {...}
-*/
+@media only screen and (max-width: 990px) and (min-width: 676px) {
+    .card {
+        height: auto;
+        padding: 0px;
+    }
+
+    .card--title {
+        display: block;
+        margin: 50px;
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+
+    .card--maps {
+        display: block;
+        margin: 10px 0px;
+    }
+
+    .card--description {
+        height: 0px;
+        opacity: 0px;
+        margin: 0px;
+        clear: both;
+    }
+
+    .card:hover .card--description, .card:active .card--description {
+        padding: 20px;
+        height: 140px;
+        opacity: 1;
+        overflow: scroll;
+    }
+
+    .card:hover .card--image, .card:active .card--image {
+        border-radius: 10px;
+    }
+}
