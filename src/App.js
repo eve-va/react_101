@@ -1,7 +1,8 @@
 import React from 'react';
 import Question from "./componenets/Question";
 import Setup from "./componenets/Setup";
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import decode from 'html-entities-decoder';
 
 function App() {
   const [questions, setQuestions] = React.useState([])
@@ -17,7 +18,7 @@ function App() {
         setQuestions(data.results.map(obj => {
           return {
             id: nanoid(),
-            question: obj.question,
+            question: decode(obj.question),
             answers: formAnswers(obj.correct_answer, obj.incorrect_answers)
           }
         }))
@@ -33,7 +34,7 @@ function App() {
     for (let i = 0; i < incorrect_answers.length; i++ ) {
       answers.push({
         id: i,
-        value: incorrect_answers[i],
+        value: decode(incorrect_answers[i]),
         isCorrect: i === index,
         isChosen: false,
         isChecked: false
