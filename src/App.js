@@ -5,7 +5,7 @@ import Menu from './componenets/Menu';
 function App() {
     return (
         <div>
-            <Menu something="whatever" />
+            <Menu />
             <hr />
             <Favorite />
         </div>
