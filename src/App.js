@@ -1,15 +1,13 @@
-import React from 'react';
-import Favorite from './componenets/Favorite';
-import Menu from './componenets/Menu';
+import Header from './componenets/Header'
+import Button from './componenets/Button'
 
 function App() {
     return (
         <div>
-            <Menu />
-            <hr />
-            <Favorite />
+            <Header />
+            <Button />
         </div>
     )
 }
 
-export default App;
+export default App
