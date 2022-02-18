@@ -1,14 +1,15 @@
-import {ThemeContextConsumer} from "../themeContext"
+import {useContext} from "react"
+import {ThemeContext} from "../themeContext"
 
 function Button() {
+    const {theme, toggleTheme} = useContext(ThemeContext);
     return (
-        <ThemeContextConsumer>
-            {context => (
-                <button 
-                    onClick={context.toggleTheme} 
-                    className={`${context.theme}-theme`}>Switch Theme</button>
-            )}
-        </ThemeContextConsumer>
+        <button 
+            onClick={toggleTheme} 
+            className={`${theme}-theme`}
+        >
+            Switch Theme
+        </button>
     )    
 }
 
