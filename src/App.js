@@ -1,33 +1,20 @@
-import useWordGame from "./hooks/useWordGame"
+import {Link, Routes, Route} from "react-router-dom"
+import Home from "./components/Home"
+import Products from "./components/Products"
+import ProductDetail from "./components/ProductDetail"
 
-function App() {
-    const {
-        textBoxRef, 
-        handleChange, 
-        text, 
-        isTimeRunning, 
-        timeRemaining, 
-        startGame, 
-        wordCount
-    } = useWordGame(5)
-    
+function App() {    
     return (
         <div>
-            <h1>How fast do you type?</h1>
-            <textarea
-                ref={textBoxRef}
-                onChange={handleChange}
-                value={text}
-                disabled={!isTimeRunning}
-            />
-            <h4>Time remaining: {timeRemaining}</h4>
-            <button 
-                onClick={startGame}
-                disabled={isTimeRunning}
-            >
-                Start
-            </button>
-            <h1>Word count: {wordCount}</h1>
+            <nav>
+                <Link to="/">Home</Link>
+                <Link to="/products">Products</Link>
+            </nav>
+            <Routes>
+                <Route exact path="/" element={<Home />}/>
+                <Route exact path="/products" element={<Products />}/>
+                <Route path="/products/:productId" element={<ProductDetail />}/>
+            </Routes>
         </div>
     )
 }
