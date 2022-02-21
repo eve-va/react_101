@@ -1,19 +1,16 @@
-import {Link, Routes, Route} from "react-router-dom"
-import Home from "./components/Home"
-import Products from "./components/Products"
-import ProductDetail from "./components/ProductDetail"
+import {Routes, Route} from "react-router-dom"
+import Header from "./components/Header"
+import Cart from "./pages/Cart";
+import Photos from "./pages/Photos";
 
 function App() {    
     return (
         <div>
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/products">Products</Link>
-            </nav>
+            <Header />
+ 
             <Routes>
-                <Route exact path="/" element={<Home />}/>
-                <Route exact path="/products" element={<Products />}/>
-                <Route path="/products/:productId" element={<ProductDetail />}/>
+                <Route exact path="/" element={<Photos />}/>
+                <Route path="/cart" element={<Cart />}/>
             </Routes>
         </div>
     )
