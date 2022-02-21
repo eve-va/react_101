@@ -8,7 +8,11 @@ function Photos() {
 
     const imageElements = allPhotos.map((img, i) => {
         return (
-            <Image key={img.id} img={img} className={getClass(i)} />
+            <Image 
+                key={img.id}
+                img={img}
+                className={getClass(i)}
+            />
         )
     })
 
