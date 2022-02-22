@@ -1,11 +1,21 @@
-import {createStore} from "redux"
+import {applyMiddleware, createStore} from "redux"
+import thunk from "redux-thunk"
 
 export function increment() {
-    return {
-        type: "INCREMENT"
+    return (dispatch, getState) => {
+        const number = getState()
+        const baseUrl = "https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json"
+        fetch(`${baseUrl}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res[number]);
+                dispatch({
+                    type: "INCREMENT",
+                    payload: res[number]
+                })
+            })
     }
 }
-
 export function decrement() {
     return {
         type: "DECREMENT"
@@ -23,6 +33,6 @@ function reducer(count = 0, action) {
     }
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 store.subscribe(() => console.log(store.getState()));
 export default store;
