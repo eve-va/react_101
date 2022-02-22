@@ -1,17 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from "react-router-dom";
-import { PhotosContextProvider } from './PhotosContext';
-import './index.css';
-import App from './App';
+import { createStore } from "redux"
 
-ReactDOM.render(
-  <React.StrictMode>
-    <PhotosContextProvider>
-      <Router>
-        <App />
-      </Router>
-    </PhotosContextProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//action
+function increment() {
+    return {
+        type: "INCREMENT"
+    }
+}
+
+function decrement() {
+    return {
+        type: "DECREMENT"
+    }
+}
+
+function reducer(state = {count: 0}, action) {
+    switch(action.type) {
+        case "INCREMENT":
+            return {
+                count: state.count + 1
+            }
+        case "DECREMENT":
+            return {
+                count: state.count - 1
+            }
+        default:
+            return state;
+    }
+}
+
+const store = createStore(reducer);
+store.subscribe(() => {
+    console.log(store.getState());
+})
+
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(increment());
+store.dispatch(decrement());
