@@ -1,39 +1,11 @@
-import { createStore } from "redux"
+import store from "./redux"
+import { changeCount } from "./redux/count"
+import { downvoteVideo, setYouTubeTitle, upvoteVideo } from "./redux/youTubeVideo"
+import { addFavoriteThing } from "./redux/favoriteThings"
 
-//action
-function increment() {
-    return {
-        type: "INCREMENT"
-    }
-}
-
-function decrement() {
-    return {
-        type: "DECREMENT"
-    }
-}
-
-function reducer(state = {count: 0}, action) {
-    switch(action.type) {
-        case "INCREMENT":
-            return {
-                count: state.count + 1
-            }
-        case "DECREMENT":
-            return {
-                count: state.count - 1
-            }
-        default:
-            return state;
-    }
-}
-
-const store = createStore(reducer);
-store.subscribe(() => {
-    console.log(store.getState());
-})
-
-store.dispatch(increment());
-store.dispatch(increment());
-store.dispatch(increment());
-store.dispatch(decrement());
+store.dispatch(changeCount(42));
+store.dispatch(addFavoriteThing("Chocolate"));
+store.dispatch(setYouTubeTitle("New Video"));
+store.dispatch(upvoteVideo());
+store.dispatch(downvoteVideo());
+store.dispatch(upvoteVideo());
