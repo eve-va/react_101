@@ -1,119 +1,137 @@
-* {
-    box-sizing: border-box;
+:root {
+    --black: #150605;
+    --red: #EA453C;
+    --pink: #F47B6E;
+    --light-blue: #EFFBFE;
+    --blue: #ACE6EC;
 }
 
-body {
-    font-family: "Karla", serif;
-    background-color: #F5F7FB;
+html, body {
+    font-family: 'Oswald', sans-serif;
     margin: 0;
+    padding: 0;
 }
 
-.quiz-container {
-    margin: 0 10%;
-}
-
-.question {
-    font-weight: bold;
-    font-size: 25px;
-    color: #293264;
-    margin-top: 35px;
-    margin-bottom: 20px;
-}
-
-.options-container {
+main.photos {
+    padding: 10px;
     display: grid;
-    grid-template: auto / repeat(4, 1fr);
-    column-gap: 25px;
-    padding-bottom: 10px;
-    border-bottom: 1.5px solid #DBDEF0;
+    grid-gap: 2px;
+    grid-auto-rows: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-auto-flow: dense;
 }
 
-.option {
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 15px;
+main.cart-page {
+    padding: 10px;
+}
+
+.cart-page > h1 {
     text-align: center;
-    color: #293264;
-    padding: 2%;
-    border: 2px solid #4D5B9E;
-    border-radius: 8px;
-    margin-bottom: 20px;
 }
 
-.option:hover{
+.cart-page .total-cost {
+    text-align: right;
+    font-size: 1.3em;
+}
+
+.cart-page div.order-button {
+    display: flex;
+    justify-content: center;
+}
+
+div.order-button > button {
+    border-color: var(--black);
     cursor: pointer;
-    box-shadow: 0px 0px 5px #293264;
+    padding: 15px;
+    transition: all .2s ease-in-out;
 }
 
-.option:active{
-    background-color: #D6DBF5;
+div.order-button > button:focus {
+    outline: none;
 }
 
-.quiz-button, .start-quiz-button {
-    height: 50px;
-    width: 15vw;
-    font-size: 15px;
-    font-weight: normal;
-    color: #FFFFFF;
-    background: #4D5B9E;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 20px 32.5vw 20px;
+div.order-button > button:disabled {
+    border-color: lightgray;
 }
 
-.quiz-score {
-    font-family: Inter;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    color: #293264;
-    margin-bottom: 0px;
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
 }
 
-.quiz-title {
-    font-family: Karla;
-    font-weight: bold;
-    font-size: 50px;
-    color: #293264;
-    text-align: center;
-    margin-top: 100px;
-    margin-bottom: 50px;
-}
-
-.start-quiz-button {
-    margin: 20px 42.5vw 20px;
-}
-
-.quiz-select {
-    width: 30%;
-    color: #293264;
-    margin-left: auto;
+.cart-item img {
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-left: 10px;   
 }
 
-.quiz-select > p {
-    font-size: 15px;
-    margin-bottom: 5px;
+img.image-grid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-@media only screen and (max-width: 750px) and (min-width: 200px) {
-    .options-container {
-        grid-template: auto auto / repeat(2, 1fr);
-    }
-
-    .quiz-button {
-        width: 25vw;
-        margin-left: 27.5vw;
-    }
-
-    .start-quiz-button {
-        width: 25vw;
-        margin-left: 37.5vw;
-    }
-
-    .quiz-select {
-        width: 50%;
-    }
+.image-container {
+    position: relative;
 }
+
+.favorite {
+    color: var(--red);
+    font-size: 1.2rem;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+}
+
+.ri-heart-fill {
+    opacity: .7;
+}
+
+.ri-delete-bin-line, .ri-delete-bin-fill {
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.cart {
+    color: var(--blue);
+    font-size: 1.2rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+ 
+.wide {
+    grid-column: span 2;
+}
+
+.tall {
+    grid-row: span 2;
+}
+
+.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--pink);
+    color: var(--light-blue);
+    padding: 0 10px;
+    -webkit-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
+    -moz-box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
+    box-shadow: 0px 2px 10px -5px rgba(21,6,5,1);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited { color: var(--light-blue); }
+a:hover { color: var(--light-blue); }
+a:active { color: var(--light-blue); }
