@@ -1,26 +1,18 @@
 import React from "react"
-import {connect} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import {increment, decrement} from "./redux"
 
 function App(props) {    
+    const count = useSelector(state => state)
+    const dispatch = useDispatch()
+
     return (
         <div>
-            <h1>{props.count}</h1>
-            <button onClick={props.decrement}>-</button>
-            <button onClick={props.increment}>+</button>
+            <h1>{count}</h1>
+            <button onClick={() => dispatch(decrement())}>-</button>
+            <button onClick={() => dispatch(increment())}>+</button>
         </div>
     )
 }
 
-function mapStateToProps(state) {
-    return {
-        count: state
-    }
-}
-
-const mapDispatchToProps = {
-    increment,
-    decrement
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
