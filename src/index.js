@@ -1,11 +1,15 @@
+import React from "react"
+import ReactDOM from "react-dom"
+import {Provider} from "react-redux"
 import store from "./redux"
-import { changeCount } from "./redux/count"
-import { downvoteVideo, setYouTubeTitle, upvoteVideo } from "./redux/youTubeVideo"
-import { addFavoriteThing } from "./redux/favoriteThings"
 
-store.dispatch(changeCount(42));
-store.dispatch(addFavoriteThing("Chocolate"));
-store.dispatch(setYouTubeTitle("New Video"));
-store.dispatch(upvoteVideo());
-store.dispatch(downvoteVideo());
-store.dispatch(upvoteVideo());
+import App from "./App"
+
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </React.StrictMode>, 
+    document.getElementById("root")
+)

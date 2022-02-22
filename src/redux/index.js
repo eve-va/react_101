@@ -1,17 +1,28 @@
-import {combineReducers, createStore} from "redux"
-import countReducer from "./count"
-import favoriteThingsReducer from "./favoriteThings"
-import youTubeVideoReducer from "./youTubeVideo"
+import {createStore} from "redux"
 
-const rootReducer = combineReducers({
-    count: countReducer,
-    favoriteThings: favoriteThingsReducer,
-    youTubeVideo: youTubeVideoReducer
-})
+export function increment() {
+    return {
+        type: "INCREMENT"
+    }
+}
 
-const store = createStore(rootReducer)
-store.subscribe(() => {
-    console.log(store.getState())
-})
+export function decrement() {
+    return {
+        type: "DECREMENT"
+    }
+}
 
+function reducer(count = 0, action) {
+    switch(action.type) {
+        case "INCREMENT":
+            return count + 1
+        case "DECREMENT":
+            return count - 1
+        default:
+            return count
+    }
+}
+
+const store = createStore(reducer);
+store.subscribe(() => console.log(store.getState()));
 export default store;
