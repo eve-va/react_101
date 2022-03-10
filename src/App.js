@@ -1,18 +1,15 @@
-import React from "react"
-import {useDispatch, useSelector} from "react-redux"
-import {increment, decrement} from "./redux"
+import { lazy, Suspense } from 'react';
 
-function App(props) {    
-    const count = useSelector(state => state)
-    const dispatch = useDispatch()
+const Dashboard = lazy(() => import ('./pages/dashboard'));
+const Login = lazy(() => import ('./pages/login'));
+const SignUp = lazy(() => import ('./pages/signup'));
+const Profile = lazy(() => import ('./pages/profile'));
+const NotFound = lazy(() => import ('./pages/not-found'));
 
+export default function App() {
     return (
-        <div>
-            <h1>{count}</h1>
-            <button onClick={() => dispatch(decrement())}>-</button>
-            <button onClick={() => dispatch(increment())}>+</button>
-        </div>
-    )
+        <Suspense fallback={<p>Loading...</p>}>
+            <p>This is where our content will be</p>
+        </Suspense>
+    );
 }
-
-export default App;

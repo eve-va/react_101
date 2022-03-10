@@ -1,15 +1,14 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import {Provider} from "react-redux"
-import store from "./redux"
-
 import App from "./App"
+import { app } from './lib/firebase';
+import FirebaseContext from './context/firebase';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
+    <FirebaseContext.Provider value={{ app }}>
+        <React.StrictMode>
             <App />
-        </Provider>
-    </React.StrictMode>, 
+        </React.StrictMode>
+    </FirebaseContext.Provider>, 
     document.getElementById("root")
-)
+);
