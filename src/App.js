@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import * as ROUTES from './constants/routes';
 const Dashboard = lazy(() => import ('./pages/dashboard'));
 const Login = lazy(() => import ('./pages/login'));
 const SignUp = lazy(() => import ('./pages/signup'));
@@ -8,8 +10,16 @@ const NotFound = lazy(() => import ('./pages/not-found'));
 
 export default function App() {
     return (
-        <Suspense fallback={<p>Loading...</p>}>
-            <p>This is where our content will be</p>
-        </Suspense>
+        <Router>
+            <Suspense fallback={<p>Loading...</p>}>
+                <Routes>
+                    <Route path={ROUTES.LOGIN} element={<Login />} />
+                    <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
+                    <Route path={ROUTES.PROFILE} element={<Profile />} />
+                    <Route path={ROUTES.DASHBOARD} element={<Dashboard />} exact />
+                    <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
+                </Routes>
+            </Suspense>
+        </Router>
     );
 }
