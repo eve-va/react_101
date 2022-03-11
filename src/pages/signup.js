@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import { doc, setDoc } from 'firebase/firestore/lite';
 import * as ROUTES from '../constants/routes';
 import logo from '../images/logo.png';
+import { doesUsernameExist } from '../services/firebase';
 import FirebaseContext from '../context/firebase';
 
 export default function SignUp() {
@@ -21,25 +22,30 @@ export default function SignUp() {
     const handleSignUp = async (event) => {
         event.preventDefault();
         
-        try {
-            const auth = getAuth();
-            const createdUser = await createUserWithEmailAndPassword(auth, emailAddress, password);
-            await updateProfile(auth.currentUser, { displayName: username });
-            await setDoc(doc(db, "users", createdUser.user.uid), {
-                userId: createdUser.user.uid,
-                username: username.toLowerCase(),
-                fullName,
-                emailAddress: emailAddress.toLowerCase(),
-                following: [],
-                followers: [],
-                dateCreated: Date.now()
-            });
-            navigate(ROUTES.DASHBOARD);
-        } catch (error) {
-            setFullName('');
-            setEmailAddress('');
-            setPassword('');
-            setError(error.message);
+        const doesUsernameExistResult = await doesUsernameExist(username);
+        if (doesUsernameExistResult && doesUsernameExistResult.length === 0) {
+            try {
+                const auth = getAuth();
+                const createdUser = await createUserWithEmailAndPassword(auth, emailAddress, password);
+                await updateProfile(auth.currentUser, { displayName: username });
+                await setDoc(doc(db, "users", createdUser.user.uid), {
+                    userId: createdUser.user.uid,
+                    username: username.toLowerCase(),
+                    fullName,
+                    emailAddress: emailAddress.toLowerCase(),
+                    following: [],
+                    followers: [],
+                    dateCreated: Date.now()
+                });
+                navigate(ROUTES.DASHBOARD);
+            } catch (error) {
+                setFullName('');
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
+            }
+        } else {
+            setError('That username is already taken, please try another.');
         }
     }
 
