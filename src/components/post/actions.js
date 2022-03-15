@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
 export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) {
     const [toggleLiked, setToggleLiked] = useState(likedPhoto);
-    const [likes, setLikes] = useState(totalLikes);
+    const [likesCount, setLikesCount] = useState(totalLikes);
     const { db } = useContext(FirebaseContext);
     const {
         user: { uid: userId = '' }
@@ -14,14 +14,16 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
     const handleToggleLiked = async () => {
         setToggleLiked((toggleLiked) => !toggleLiked);
         
-        const photosRef = doc(db, "photos", docId);
-        await updateDoc(photosRef, {
-            likes: toggleLiked ? [] : [ userId ]
-            //proper update likes
-            //FieldValue.arrayRemove(userId) : FieldValue.arrayUnion(userId)
+        const docRef = doc(db, "photos", docId);
+        const photo =  await getDoc(docRef);
+        const likes = photo.data().likes;
+        await updateDoc(docRef, {
+            likes: toggleLiked
+                ? likes.filter((id) => id !== userId)
+                : [...likes, userId]
         });
         
-        setLikes((likes) => (toggleLiked ? likes - 1 : likes + 1));
+        setLikesCount((likesCount) => (toggleLiked ? likesCount - 1 : likesCount + 1));
     }
 
     return (
@@ -75,7 +77,7 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
                 </div>
             </div>
             <div className="p-4 py-0">
-                <p className="font-bold">{likes === 1 ? `${likes} like` : `${likes} likes`}</p>
+                <p className="font-bold">{likesCount === 1 ? `${likesCount} like` : `${likesCount} likes`}</p>
             </div>
         </>
     )

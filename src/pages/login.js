@@ -17,12 +17,10 @@ export default function Login() {
 
         const auth = getAuth();
             signInWithEmailAndPassword(auth, emailAddress, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
+            .then(() => {
                 navigate(ROUTES.DASHBOARD);
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
                 setEmailAddress('');
                 setPassword('');

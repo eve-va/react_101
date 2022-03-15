@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 import * as ROUTES from '../constants/routes';
 import UserContext from '../context/user';
+import useUser from '../hooks/use-user';
 
 export default function Header() {
     const { user } = useContext(UserContext);
+    const { 
+        user: { username } 
+    } = useUser();
     const auth = getAuth();
 
     return (
@@ -67,11 +71,11 @@ export default function Header() {
                                     </svg>
                                 </button>
                                 <div className="flex items-center cursor-pointer">
-                                    <Link to={`/p/${user.displayName}`}>
+                                    <Link to={`/p/${username}`}>
                                         <img
                                             className="rounded-full h-8 w-8 flex"
                                             src="../../images/avatars/karl.jpg"
-                                            alt={`${user.displayName} profile`}
+                                            alt={`${username} profile`}
                                         />
                                     </Link>
                                 </div>

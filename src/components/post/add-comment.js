@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
 
@@ -16,11 +16,11 @@ export default function AddComment({ docId, comments, setComments, commentInput 
         setComments([{ displayName, comment }, ...comments ]);
         setComment('');
         
-        const photosRef = doc(db, "photos", docId);
-        return await updateDoc(photosRef, {
-            comments: [{ displayName, comment }]
-            //proper update comments
-            //FieldValue.arrayUnion({ displayName, comment })
+        const docRef = doc(db, "photos", docId);
+        const photo =  await getDoc(docRef);
+        const commentsRef = photo.data().comments;
+        return await updateDoc(docRef, {
+            comments: [...commentsRef, { displayName, comment }]
         });
 
     }
