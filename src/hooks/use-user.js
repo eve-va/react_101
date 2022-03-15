@@ -11,7 +11,7 @@ export default function useUser() {
             const [response] = await getUserByUserId(user.uid);
             setActiveUser({ ...response });
         }
-        if (user && user.id) {
+        if (user && user.uid) {
             getUserObjByUserId();
         }
     }, [user]);

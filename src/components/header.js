@@ -7,8 +7,6 @@ import UserContext from '../context/user';
 export default function Header() {
     const { user } = useContext(UserContext);
     const auth = getAuth();
-    
-    console.log('header ' + JSON.stringify(user));
 
     return (
         <header className="h-16 bg-white border-b mb-8">
