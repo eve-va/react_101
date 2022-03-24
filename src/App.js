@@ -1,19 +1,37 @@
-import {Routes, Route} from "react-router-dom"
-import Header from "./components/Header"
-import Cart from "./pages/Cart";
-import Photos from "./pages/Photos";
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import UserContext from './context/user';
+import useAuthListener from './hooks/use-auth-listener';
+import * as ROUTES from './constants/routes';
 
-function App() {    
+const Dashboard = lazy(() => import ('./pages/dashboard'));
+const Login = lazy(() => import ('./pages/login'));
+const SignUp = lazy(() => import ('./pages/signup'));
+const Profile = lazy(() => import ('./pages/profile'));
+const NotFound = lazy(() => import ('./pages/not-found'));
+
+export default function App() {
+    const { user } = useAuthListener();
+
     return (
-        <div>
-            <Header />
- 
-            <Routes>
-                <Route exact path="/" element={<Photos />}/>
-                <Route path="/cart" element={<Cart />}/>
-            </Routes>
-        </div>
-    )
+        <UserContext.Provider value={{ user }}>
+            <Router>
+                <Suspense fallback={<p>Loading...</p>}>
+                <Routes>
+                    <Route 
+                        path={ROUTES.LOGIN} 
+                        element={user ? <Navigate to={ROUTES.DASHBOARD} /> : <Login />}
+                    />
+                    <Route path={ROUTES.SIGN_UP} element={<SignUp />}/>
+                    <Route path={ROUTES.PROFILE} element={<Profile />} />
+                    <Route 
+                        path={ROUTES.DASHBOARD} exact  
+                        element={user ? <Dashboard /> : <Navigate to={ROUTES.LOGIN} /> }
+                    />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+                </Suspense>
+            </Router>
+        </UserContext.Provider>
+    );
 }
-
-export default App;
