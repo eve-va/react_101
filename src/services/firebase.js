@@ -73,12 +73,15 @@ export async function updateUserFollowing(userId, profileId, isFollowingProfile)
 
 export async function updateFollowedUserFollowers(userId, docId, followingUserId, isFollowingProfile) {
     const usersRef = doc(db, "users", docId);
-    const [{ following }] = await getUserByUserId(userId);
+    console.log('docId ' + docId);
+    console.log('userId ' + userId);
+    console.log('folllowinguserId ' + followingUserId);
+    const [{ followers }] = await getUserByUserId(userId);
 
     return await updateDoc(usersRef, {
-        following: isFollowingProfile
-            ? following.filter((userId) => userId !== followingUserId)
-            : [...following, followingUserId]
+        followers: isFollowingProfile
+            ? followers.filter((userId) => userId !== followingUserId)
+            : [...followers, followingUserId]
     });
 }
 
@@ -128,9 +131,8 @@ export async function toggleFollow(
     profileId,
     followingUserId
 ) {
-    // ui - db
     await updateUserFollowing(followingUserId, profileId, isFollowingProfile);
-    await updateFollowedUserFollowers(profileId, activeUserDocId, followingUserId, isFollowingProfile);
+    await updateFollowedUserFollowers(profileId, profileDocId, followingUserId, isFollowingProfile);
 }
 
 export async function isUserFollowingProfile(activeUsername, profileUserId) {

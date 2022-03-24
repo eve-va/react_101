@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { formatDistance } from 'date-fns';
+//import { formatDistance } from 'date-fns';
 import AddComment from './add-comment';
 
 export default function Comments({ docId, comments: allComments, posted, commentInput }) {
@@ -24,7 +24,6 @@ export default function Comments({ docId, comments: allComments, posted, comment
                 ))}
                 <p className="text-gray uppercase text-xs mt-2">
                     {
-                        //wrong date format
                         /*formatDistance(posted, new Date())*/
                     } ago
                 </p>

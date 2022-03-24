@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { doc, setDoc } from 'firebase/firestore/lite';
+import { doc, setDoc } from 'firebase/firestore';
 import * as ROUTES from '../constants/routes';
 import { doesUsernameExist } from '../services/firebase';
 import FirebaseContext from '../context/firebase';
 
 export default function SignUp() {
     const navigate = useNavigate();
-    const { db } = useContext(FirebaseContext);
+    const db  = useContext(FirebaseContext);
 
     const [username, setUsername] = useState('');
     const [fullName, setFullName] = useState('');

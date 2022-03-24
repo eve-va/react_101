@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# React 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Fundamentals (JSX, components, props, state)
 
-## Available Scripts
+### [JSX](https://reactjs.org/docs/introducing-jsx.html) - JavaScript XML, a syntax extension of JavaScript to directly write HTML in React
 
-In the project directory, you can run:
+```js
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
 
-### `npm start`
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### [Components and props](https://reactjs.org/docs/components-and-props.html) - like JavaScript functions, accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+const element = <Welcome name="Sara" />;
+```
 
-### `npm test`
+All React components must act like pure functions with respect to their props.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### [State](https://reactjs.org/docs/state-and-lifecycle.html) - state is similar to props, but it is private and fully controlled by the component
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Advanced (hooks, context, refs, Router, Redux)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### [Hooks](https://reactjs.org/docs/hooks-reference.html) - functions that let you “hook into” React state and lifecycle features from function components. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`useState` is a Hook that lets you add React state to function components
+`useEffect` Hook lets you perform side effects in function components
 
-### `npm run eject`
+```js
+function Example() {
+    const [count, setCount] = useState(0);
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    useEffect(() => {
+        document.title = `You clicked ${count} times`;
+    }, [count]);
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    return (
+        <div>
+            <p>You clicked {count} times</p>
+            <button onClick={() => setCount(count + 1)}>Button</button>
+        </div>
+    );
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+`custom Hooks` - alternative to render props and higher-order components, a JavaScript function whose name starts with ”use” and that may call other Hooks
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### [Context](https://reactjs.org/docs/context.html) - a way to share values between components without having to explicitly pass a prop through every level of the tree
 
-## Learn More
+```js
+const MyContext = React.createContext(defaultValue);
+<MyContext.Provider value={/* some value */}>
+<MyContext.Consumer>
+  {value => /* render something based on the context value */}
+</MyContext.Consumer>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Hook `useContext` - accepts a context object (the value returned from React.createContext) and returns the current context value for that context
+const value = useContext(MyContext);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### [refs](https://reactjs.org/docs/refs-and-the-dom.html) - “ a box” that can hold a mutable value in its .current property
 
-### Code Splitting
+A way to access the DOM. If you pass a ref object to React with <div ref={myRef} />, React will set its .current property to the corresponding DOM node whenever that node changes. It’s useful for keeping any mutable value around similar to how you’d use instance fields in classes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Hook `useRef`
 
-### Analyzing the Bundle Size
+```js
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref={inputEl} type="text" />
+      <button onClick={onButtonClick}>Focus the input</button>
+    </>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### [Router](https://reactrouter.com/) - a standard library for routing in React
 
-### Making a Progressive Web App
+```js
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### [Redux](https://react-redux.js.org/) - a library for managing and centralizing application state
 
-### Advanced Configuration
+React Redux includes a <Provider /> component, which makes the Redux store available to the rest of your app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```js
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
+```
 
-### Deployment
+React Redux provides a pair of custom React hooks that allow your React components to interact with the Redux store: useSelector reads a value from the store state and subscribes to updates, while useDispatch returns the store's dispatch method to let you dispatch actions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```js
+export function Counter() {
+  const count = useSelector(selectCount)
+  const dispatch = useDispatch()
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  return (
+    <div>
+      <div className={styles.row}>
+        <button
+          className={styles.button}
+          aria-label="Increment value"
+          onClick={() => dispatch(increment())}
+        >
+          +
+        </button>
+        <span className={styles.value}>{count}</span>
+        <button
+          className={styles.button}
+          aria-label="Decrement value"
+          onClick={() => dispatch(decrement())}
+        >
+            -
+        </button>
+      </div>
+    </div>
+  )
+}
+```

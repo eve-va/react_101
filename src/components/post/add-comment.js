@@ -5,7 +5,7 @@ import UserContext from '../../context/user';
 
 export default function AddComment({ docId, comments, setComments, commentInput }) {
     const [comment, setComment] = useState('');
-    const { db } = useContext(FirebaseContext);
+    const db = useContext(FirebaseContext);
     const {
         user: { displayName }
     } = useContext(UserContext);

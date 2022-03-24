@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 import * as ROUTES from '../constants/routes';
 import UserContext from '../context/user';
@@ -11,6 +11,7 @@ export default function Header() {
         user: { username } 
     } = useUser();
     const auth = getAuth();
+    const navigate = useNavigate();
 
     return (
         <header className="h-16 bg-white border-b mb-8">
@@ -47,11 +48,13 @@ export default function Header() {
                                     type="button"
                                     title="Sign Out"
                                     onClick={() => {
-                                        signOut(auth)
+                                        signOut(auth);
+                                        navigate(ROUTES.LOGIN);
                                     }}
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
-                                            signOut(auth)
+                                            signOut(auth);
+                                            navigate(ROUTES.LOGIN);
                                         }
                                     }}
                                 >
@@ -74,7 +77,7 @@ export default function Header() {
                                     <Link to={`/p/${username}`}>
                                         <img
                                             className="rounded-full h-8 w-8 flex"
-                                            src="../../images/avatars/karl.jpg"
+                                            src={`../../images/avatars/${username}.jpg`}
                                             alt={`${username} profile`}
                                         />
                                     </Link>
